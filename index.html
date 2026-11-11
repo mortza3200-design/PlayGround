@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#07111e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2357f3d0' d='M4 17h4V7H4zm6 0h4V4h-4zm6 0h4V2h-4z'/%3E%3C/svg%3E">
+  <title>Neon Trace — Snake, reimagined</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Neon Trace home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>NEON<span class="brand-light">TRACE</span></span>
+      </a>
+      <div class="top-meta"><span class="live-dot"></span> ARCADE MODE <span class="meta-divider">/</span> 01</div>
+      <button class="icon-button sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound">
+        <svg id="soundIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M16 9a5 5 0 0 1 0 6M18.5 6.5a9 9 0 0 1 0 11"/></svg>
+      </button>
+    </header>
+
+    <section class="intro-row">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-line"></span> A CLASSIC, REWIRED</div>
+        <h1>Leave your <span>mark.</span></h1>
+        <p class="subtitle">Every turn becomes a wall. How long can you last?</p>
+      </div>
+      <div class="best-card"><span class="best-label">PERSONAL BEST</span><strong id="bestScore">00</strong><span class="best-unit">POINTS</span></div>
+    </section>
+
+    <section class="play-area" aria-label="Game area">
+      <div class="arena-frame">
+        <div class="arena-topline"><span><b class="status-pip" id="statusPip"></b><span id="statusText">READY TO RUN</span></span><span class="arena-hint">GRID <b>15 × 15</b></span></div>
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" aria-label="Isometric snake game board"></canvas>
+          <div class="screen-cover" id="screenCover">
+            <div class="cover-orbit"><div class="cover-gem">➤</div></div>
+            <div class="cover-kicker" id="coverKicker">THE GRID IS YOURS</div>
+            <h2 id="coverTitle">Ready to<br><span>leave a trace?</span></h2>
+            <p id="coverCopy">Collect light. Don’t cross your own path.</p>
+            <button class="primary-button" id="mainButton"><span id="mainButtonText">START RUN</span><span class="button-arrow">↗</span></button>
+            <div class="cover-foot">ARROWS / WASD <i>•</i> SWIPE TO TURN</div>
+          </div>
+          <div class="pause-badge" id="pauseBadge" hidden>PAUSED</div>
+        </div>
+        <div class="arena-bottomline"><span><span class="keycap">↗</span> HEAD</span><span><span class="legend-block"></span> YOUR TRAIL</span><span><span class="legend-orb"></span> ENERGY ORB</span></div>
+      </div>
+
+      <aside class="score-rail">
+        <div class="score-card score-main"><div class="score-caption">YOUR SCORE <span class="score-spark">✳</span></div><div class="score-value" id="scoreValue">00</div><div class="score-foot"><span class="score-dot"></span><span id="scoreMessage">READY WHEN YOU ARE</span></div></div>
+        <div class="score-card compact-card"><div class="score-caption">PACE</div><div class="pace-row"><strong id="paceValue">1.0</strong><span>×</span><div class="pace-meter"><i id="paceMeter"></i></div></div><div class="card-note">It gets quicker as you score</div></div>
+        <div class="tip-card"><div class="tip-icon">⌁</div><div><strong>Think ahead.</strong><p>Your trail stays put. Plan a route before the grid fills.</p></div></div>
+      </aside>
+    </section>
+
+    <section class="mobile-controls" aria-label="Touch controls">
+      <div class="control-copy"><span class="control-title">STEER</span><span class="control-hint">Tap a direction</span></div>
+      <div class="dpad" aria-label="Direction pad">
+        <button class="dir-btn dir-up" data-dir="up" aria-label="Move up"><span>↑</span></button>
+        <button class="dir-btn dir-left" data-dir="left" aria-label="Move left"><span>←</span></button>
+        <button class="dir-btn dir-down" data-dir="down" aria-label="Move down"><span>↓</span></button>
+        <button class="dir-btn dir-right" data-dir="right" aria-label="Move right"><span>→</span></button>
+        <div class="dpad-center"><span>✦</span></div>
+      </div>
+      <div class="control-actions"><button class="mini-action" id="pauseButton" aria-label="Pause game"><span>Ⅱ</span><small>PAUSE</small></button><button class="mini-action" id="restartButton" aria-label="Restart game"><span>↻</span><small>RESET</small></button></div>
+    </section>
+    <footer><span>© 2026 NEON TRACE</span><span class="footer-center"><span>NO TAIL.</span> JUST CONSEQUENCES.</span><span>BUILT FOR THE GRID <b>✳</b></span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
